@@ -1,0 +1,40 @@
+.cursor {
+  position: absolute;
+}
+
+.name {
+  font-size: 10px;
+  user-select: none;
+  position: absolute;
+  width: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-container {
+  bottom: 20px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  left: -20px;
+  .triangle {
+    border: 10px solid transparent;
+    border-top: 10px solid #aeaeae;
+    margin-left: 10px;
+  }
+  .message {
+    word-break: break-all;
+    max-width: 200px;
+    text-align: center;
+    width: max-content;
+    max-height: 200px;
+    min-width: 40px;
+    border: 1px solid #aeaeae;
+    border-radius: 6px;
+    padding: 4px;
+    overflow: hidden;
+  }
+}

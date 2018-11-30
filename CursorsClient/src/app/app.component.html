@@ -1,0 +1,33 @@
+<div class="cursor-field" (mousemove)="mmove($event)" (mouseleave)="service.leave()">
+  <div class="online">
+    <div class="cursor" *ngFor="let a of service.cursors | keys" [style.color]="service.cursors[a].color">{{service.cursors[a].name}}</div>
+  </div>
+  <div class="chat" *ngIf="service.started">
+    <div class="leave" (click)="leave()"><i class="fas fa-sign-out-alt"></i></div>
+    <div class="messages">
+      <div class="message" *ngFor="let message of service.messages"><span class="sender mr-2" [style.color]="message.color">{{message.name}}:</span>{{message.message}}</div>
+    </div>
+  </div>
+  <div class="input" *ngIf="service.started">
+    <input type="text" placeholder="write message" class="form-control" #text (keydown.enter)="service.sendMessage(text.value); text.value = ''" autofocus (blur)="text.focus()">
+  </div>
+  <app-cursor *ngFor="let a of service.cursors | keys" [cursor]="service.cursors[a]" [message]="service.currentMessages[a]?.message.message"></app-cursor>
+</div>
+
+<div class="init" *ngIf="!service.started">
+  <div class="container">
+    <div class="col cursor">
+      <div class="server-status">server: <i class="fas fa-circle" [style.color]="service.serverOnline ? 'green' : 'red'"></i> {{service.serverOnline ? 'online' : 'offline'}}</div>
+      <div class="form-group">
+        <label for="name">nickname</label>
+        <input type="text" class="form-control nickname" id="name" [(ngModel)]="name" [style.color]="color">
+      </div>
+      <div class="form-group">
+        <label for="color">color</label>
+        <input [(colorPicker)]="color"
+               [style.background]="color" class="color form-control" id="color"  [(ngModel)]="color"/>      </div>
+      <i class="fas fa-mouse-pointer fa-10x" [style.color]="color"></i>
+      <button class="btn btn-success" (click)="start()" [disabled]="!service.serverOnline">start</button>
+    </div>
+  </div>
+</div>

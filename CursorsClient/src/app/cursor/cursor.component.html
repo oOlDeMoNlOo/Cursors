@@ -1,0 +1,8 @@
+<div class="cursor" [style.top.px]="cursor.y" [style.left.px]="cursor.x" *ngIf="!cursor.leave">
+  <div class="message-container" *ngIf="message">
+    <div class="message" >{{message}}</div>
+    <div class="triangle"></div>
+  </div>
+  <i class="fas fa-mouse-pointer" [style.color]="cursor.color"></i>
+  <div class="name" [style.color]="cursor.color">{{cursor.name}}</div>
+</div>

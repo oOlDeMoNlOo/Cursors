@@ -1,0 +1,5 @@
+/CursorsClient/node_modules
+/CursorsClient/e2e
+/cursors-server/node_modules
+/cursors-server/src
+.idea
